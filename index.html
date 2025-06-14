@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loss Function Navigation - Aerial Optimization Strategy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Loss Function Navigation</h1>
+            <p class="subtitle">Aerial Optimization Strategy Visualization</p>
+        </header>
+
+        <div class="main-content">
+            <div class="visualization-container">
+                <div id="terrain-viz"></div>
+                <div class="controls-overlay">
+                    <div class="strategy-selector">
+                        <h3>Navigation Strategy</h3>
+                        <button class="strategy-btn active" data-strategy="aerial">Aerial Survey</button>
+                        <button class="strategy-btn" data-strategy="grid">Grid Search</button>
+                        <button class="strategy-btn" data-strategy="spiral">Spiral Search</button>
+                        <button class="strategy-btn" data-strategy="direct">Direct Descent</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="current-position">
+                    <h3>Current Position</h3>
+                    <div class="metric">
+                        <span class="label">X (Parameter 1):</span>
+                        <span class="value" id="x-pos">0.00</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Z (Parameter 2):</span>
+                        <span class="value" id="z-pos">0.00</span>
+                    </div>
+                    <div class="metric">
+                        <span class="label">Loss (Elevation):</span>
+                        <span class="value" id="loss-value">0.00</span>
+                    </div>
+                </div>
+
+                <div class="strategy-info">
+                    <h3>Strategy Description</h3>
+                    <p id="strategy-description">
+                        Aerial Survey: Make large jumps across parameter space to identify global terrain features.
+                    </p>
+                </div>
+
+                <div class="controls">
+                    <h3>Exploration Controls</h3>
+                    <button id="start-exploration" class="control-btn primary">Start Exploration</button>
+                    <button id="fast-forward" class="control-btn">Fast Forward</button>
+                    <button id="reset-view" class="control-btn">Reset View</button>
+                    <div class="slider-control">
+                        <label>Speed</label>
+                        <input type="range" id="speed-slider" min="1" max="10" value="5">
+                    </div>
+                    <div class="slider-control">
+                        <label>Jump Size</label>
+                        <input type="range" id="jump-slider" min="1" max="100" value="50">
+                    </div>
+                    <div class="checkbox-control">
+                        <label>
+                            <input type="checkbox" id="show-heatmap"> Show Exploration Heatmap
+                        </label>
+                    </div>
+                </div>
+
+                <div class="history">
+                    <h3>Exploration History</h3>
+                    <div id="history-log"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-section">
+            <h2>Understanding Aerial Optimization</h2>
+            <div class="explanation-grid">
+                <div class="concept-card">
+                    <h3>🚁 Freedom of Movement</h3>
+                    <p>Unlike gradient descent that must follow terrain contours, aerial navigation can jump directly to any point, avoiding local minima traps.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🎯 Strategic Exploration</h3>
+                    <p>Survey the entire landscape first to identify promising regions, then focus efforts on the most promising areas.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>⚡ Efficient Search</h3>
+                    <p>Large jumps early in exploration quickly eliminate poor regions, while fine-tuning happens only in promising basins.</p>
+                </div>
+                <div class="concept-card">
+                    <h3>🔄 Adaptive Strategy</h3>
+                    <p>Switch between exploration modes based on current knowledge - from broad surveys to focused spiral searches.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="visualization.js"></script>
+</body>
+</html>
